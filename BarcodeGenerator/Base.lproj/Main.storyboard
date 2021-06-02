@@ -17,25 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="9he-v3-m7B">
-                                <rect key="frame" x="125" y="161" width="164" height="187"/>
+                                <rect key="frame" x="118" y="161" width="178" height="187"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="barcode Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lj9-Ek-VHb">
-                                        <rect key="frame" x="0.0" y="0.0" width="164" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123456789012345678" borderStyle="roundedRect" placeholder="barcode Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lj9-Ek-VHb">
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="barcode Length" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-w5-eVa">
-                                        <rect key="frame" x="0.0" y="51" width="164" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="60" borderStyle="roundedRect" placeholder="barcode Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-w5-eVa">
+                                        <rect key="frame" x="0.0" y="51" width="178" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="barcode Width" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYR-y3-z5w">
-                                        <rect key="frame" x="0.0" y="102" width="164" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="250" borderStyle="roundedRect" placeholder="barcode Width" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYR-y3-z5w">
+                                        <rect key="frame" x="0.0" y="102" width="178" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="barcode Quiet Space" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AKS-7S-hBw">
-                                        <rect key="frame" x="0.0" y="153" width="164" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="2" borderStyle="roundedRect" placeholder="barcode Quiet Space" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AKS-7S-hBw">
+                                        <rect key="frame" x="0.0" y="153" width="178" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -43,6 +43,7 @@
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jnl-V9-GIt">
                                 <rect key="frame" x="82" y="418" width="250" height="60"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="AzM-KJ-vy5"/>
                                     <constraint firstAttribute="height" constant="60" id="ZCI-Nk-rHJ"/>
@@ -72,9 +73,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="barcodeImageHeightConstraint" destination="ZCI-Nk-rHJ" id="tBW-NG-5s3"/>
                         <outlet property="barcodeImageView" destination="jnl-V9-GIt" id="BoQ-cu-xjR"/>
+                        <outlet property="barcodeImageWidthConstraint" destination="AzM-KJ-vy5" id="5Rq-Hp-iF1"/>
                         <outlet property="codeTextField" destination="lj9-Ek-VHb" id="xgb-b6-7U3"/>
-                        <outlet property="lengthTextField" destination="ADa-w5-eVa" id="Ys6-zD-rzR"/>
+                        <outlet property="heightTextField" destination="ADa-w5-eVa" id="2Xp-DA-E0A"/>
                         <outlet property="quietSpaceTextField" destination="AKS-7S-hBw" id="KjN-wY-gmT"/>
                         <outlet property="widthTextField" destination="aYR-y3-z5w" id="cdb-NX-u1k"/>
                     </connections>
@@ -88,6 +91,9 @@
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

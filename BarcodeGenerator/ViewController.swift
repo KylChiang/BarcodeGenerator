@@ -32,9 +32,34 @@ class ViewController: UIViewController {
         guard let height = heightTextField.text, height != "" || height != "0" else { return }
         guard let barcodeQuietSpace = Double(space) else { return }
         
-        barcodeImageWidthConstraint.constant = CGFloat(Double(width) ?? 0.0)
-        barcodeImageHeightConstraint.constant = CGFloat(Double(height) ?? 0.0)
+        let barcodeHeight = CGFloat(Double(height) ?? 0.0)
+        let barcodeWidth = CGFloat(Double(width) ?? 0.0)
+        barcodeImageWidthConstraint.constant = barcodeWidth
+        barcodeImageHeightConstraint.constant = barcodeHeight
         
+        let size = CGSize(width: barcodeWidth, height: barcodeHeight)
+        barcodeImageView.image = generateBarcode(from: code, quietZone: barcodeQuietSpace, size: size)
+    }
+    
+    func generateBarcode(from string: String, quietZone: Double, size: CGSize) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii, allowLossyConversion: false)
+
+        if let filter = CIFilter(name: "CICode128BarcodeGenerator") {
+            filter.setDefaults()
+            filter.setValue(data, forKey: "inputMessage")
+            filter.setValue(quietZone, forKey: "inputQuietSpace")
+            
+            guard let image = filter.outputImage else { return nil }
+            
+            let imageSize = image.extent.size
+            
+            let transform = CGAffineTransform(scaleX: size.width / imageSize.width, y: size.height / imageSize.height)
+            
+            let scaledImage = image.transformed(by: transform)
+            return UIImage(ciImage: scaledImage)
+        }
+
+        return nil
     }
 }
 
